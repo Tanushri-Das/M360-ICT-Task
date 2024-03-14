@@ -1,0 +1,26 @@
+.home-btn-link {
+  margin-top: 10px;
+}
+.home-btn {
+  background-color: green;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+}
+.home-btn:hover {
+  border: 2px solid green !important;
+  background-color: none !important;
+  color: black !important;
+  border: none;
+  outline: none;
+}
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 1.3rem !important;
+  }
+  .home-desc {
+    font-size: 1rem !important;
+    padding: 0 20px;
+    text-align: center;
+  }
+}
