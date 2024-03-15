@@ -3,7 +3,7 @@ import { Form, Input, Button, Radio, Typography, Flex } from "antd";
 import "./TaskForm.css";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../Redux/TaskSlice";
-
+import { v4 as uuidv4 } from 'uuid'; // Import uuidv4
 const MyFormItemContext = React.createContext([]);
 
 function toArr(str) {
@@ -36,12 +36,14 @@ const TaskForm = () => {
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    dispatch(addTask(values));
+    const taskWithId = { id: uuidv4(), ...values }; // Generate UUID for task
+    dispatch(addTask(taskWithId));
     const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const updatedTasks = [...existingTasks, values];
+    const updatedTasks = [...existingTasks, taskWithId];
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     formRef.current.resetFields();
   };
+  
 
   return (
     <div className="taskform-div">

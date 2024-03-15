@@ -37,7 +37,7 @@ const TaskList = () => {
             Mark as Completed
           </Button>
           <Button onClick={() => handleEdit(record)}>Edit</Button>
-          <Button onClick={() => handleDelete(record)}>Delete</Button>
+          <Button className="delete-btn" onClick={() => handleDelete(record)}>Delete</Button>
         </Space>
       ),
     },
