@@ -1,0 +1,34 @@
+.form .form-label label {
+  font-size: 20px;
+  font-weight: 600;
+}
+.new-task-label{
+  text-align: center;
+}
+.task-title {
+  height: 50px !important;
+}
+.task-desc {
+  height: 90px !important;
+}
+.taskform-div {
+  margin: 50px 0;
+}
+.taskform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 800px;
+  border: 1px solid #ababab;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+}
+@media (max-width: 768px){
+  .form{
+    margin:0 15px;
+  }
+}

@@ -8,11 +8,7 @@ const { Title } = Typography;
 
 const Home = () => {
   return (
-    <Flex
-      justify="center"
-      align="center"
-      style={{ height: "80vh", flexDirection: "column" }}
-    >
+    <Flex justify="center" align="center" className="home">
       <Title level={2} className="home-title">
         Welcome to Todo List App
       </Title>
