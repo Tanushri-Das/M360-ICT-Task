@@ -1,0 +1,4 @@
+.task-list{
+    height: 80vh;
+    flex-direction: column;
+}

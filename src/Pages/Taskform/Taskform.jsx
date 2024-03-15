@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useRef } from "react";
 import { Form, Input, Button, Radio, Typography, Flex } from "antd";
 import "./TaskForm.css";
+import { useDispatch } from "react-redux";
 import { addTask } from "../../Redux/TaskSlice";
 
 const MyFormItemContext = React.createContext([]);
@@ -31,30 +31,15 @@ const MyFormItem = ({ name, ...props }) => {
 };
 
 const TaskForm = () => {
-  const dispatch = useDispatch();
-  const formRef = useRef(null);
   const { Title } = Typography;
-  const tasks = useSelector((state) => state.tasks.tasks);
-
-  useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    if (savedTasks.length > 0) {
-      dispatch(addTask(savedTasks));
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    const nonEmptyTasks = tasks.filter((task) => !isEmptyTask(task));
-    localStorage.setItem("tasks", JSON.stringify(nonEmptyTasks));
-  }, [tasks]);
-
-  const isEmptyTask = (task) => {
-    if (!task) return true;
-    return Object.keys(task).length === 0 && task.constructor === Object;
-  };
+  const formRef = useRef(null);
+  const dispatch = useDispatch();
 
   const onFinish = (values) => {
     dispatch(addTask(values));
+    const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const updatedTasks = [...existingTasks, values];
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     formRef.current.resetFields();
   };
 
