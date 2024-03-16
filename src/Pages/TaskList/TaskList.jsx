@@ -1,7 +1,7 @@
 import { Button, Flex, Space, Table, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import "./TaskList.css";
-import { deleteTask } from "../../Redux/TaskSlice";
+import { deleteTask, updateTaskStatus } from "../../Redux/TaskSlice";
 import Swal from "sweetalert2";
 
 const { Title } = Typography;
@@ -38,7 +38,10 @@ const TaskList = () => {
       key: "action",
       render: (_, record) => (
         <Space>
-          <Button onClick={() => handleComplete(record)}>
+          <Button className="mark-as-completed"
+            onClick={() => handleComplete(record)}
+            disabled={record.status === "completed"}
+          >
             Mark as Completed
           </Button>
           <Button onClick={() => handleEdit(record)}>Edit</Button>
@@ -51,7 +54,17 @@ const TaskList = () => {
   ];
 
   const handleComplete = (record) => {
-    // Handle mark as completed action
+    const updatedTasks = savedTasks.map((task) => {
+      if (task.id === record.id) {
+        if (task.status === "completed") {
+          return task; // No change if already completed
+        } else {
+          return { ...task, status: "completed" };
+        }
+      }
+      return task;
+    });
+    dispatch(updateTaskStatus(updatedTasks));
   };
 
   const handleEdit = (record) => {
