@@ -84,17 +84,22 @@
   background-color: #00004d !important;
   color: white !important;
 }
-.edit-task{
+.edit-task {
   text-align: center;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 10px;
 }
-.save-btn{
-  margin-top:20px;
+.save-btn {
+  margin-top: 20px;
 }
-.modal-form-label{
+.modal-form-label {
   font-size: 18px;
+  font-weight: 600;
+}
+.ant-select-selection-item,
+.ant-select-item-option-content {
+  font-size: 16px;
   font-weight: 600;
 }
 @media (max-width: 768px) {

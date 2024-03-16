@@ -1,11 +1,28 @@
-// TaskList.js
-import React, { useState } from 'react';
-import { Button, Flex, Space, Table, Typography, Select, Empty, Form } from 'antd';
-import EditTaskModal from './EditTaskModal';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteTask, updateTaskStatus, selectTasks, selectTotalTasks, selectCompletedTasks, setSelectedPriority, editTask, selectSelectedPriority } from '../../Redux/TaskSlice';
-import Swal from 'sweetalert2';
-import './TaskList.css'
+import React, { useState } from "react";
+import {
+  Button,
+  Flex,
+  Space,
+  Table,
+  Typography,
+  Select,
+  Empty,
+  Form,
+} from "antd";
+import EditTaskModal from "./EditTaskModal";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteTask,
+  updateTaskStatus,
+  selectTasks,
+  selectTotalTasks,
+  selectCompletedTasks,
+  setSelectedPriority,
+  editTask,
+  selectSelectedPriority,
+} from "../../Redux/TaskSlice";
+import Swal from "sweetalert2";
+import "./TaskList.css";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -16,10 +33,8 @@ const TaskList = () => {
   const totalTasks = useSelector(selectTotalTasks);
   const completedTasks = useSelector(selectCompletedTasks);
   const selectedPriority = useSelector(selectSelectedPriority);
-
   const [editModalVisible, setEditModalVisible] = useState(false);
-  const [editTaskId, setEditTaskId] = useState(null);
-  const [form] = Form.useForm(); // Ant Design form instance
+  const [form] = Form.useForm();
   const [record, setRecord] = useState(null);
 
   const priorityOptions = ["All", "Low", "Medium", "High"].map((priority) => (
@@ -28,7 +43,6 @@ const TaskList = () => {
     </Option>
   ));
 
-  // Define filteredTasks based on selected priority
   const filteredTasks =
     selectedPriority === "All"
       ? savedTasks

@@ -43,8 +43,12 @@
 }
 .add-task:hover {
   border: 2px solid #f63e7b !important;
-  background-color:white !important;
+  background-color: white !important;
   color: black !important;
+}
+.status-radio-btn {
+  font-size: 16px !important;
+  font-weight: 500 !important;
 }
 @media (max-width: 768px) {
   .form {

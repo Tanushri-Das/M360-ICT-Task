@@ -55,39 +55,23 @@ const TaskForm = () => {
 
           <Form.Item name="status" className="form-label" label="Status">
             <Radio.Group className="radio-btn">
-              <Radio
-                style={{ fontSize: "16px", fontWeight: "500" }}
-                value="incomplete"
-              >
+              <Radio className="status-radio-btn" value="incomplete">
                 Incomplete
               </Radio>
-              <Radio
-                style={{ fontSize: "16px", fontWeight: "500" }}
-                value="completed"
-              >
+              <Radio className="status-radio-btn" value="completed">
                 Completed
               </Radio>
             </Radio.Group>
           </Form.Item>
-
           <Form.Item name="priority" className="form-label" label="Priority">
             <Radio.Group>
-              <Radio
-                value="Low"
-                style={{ fontSize: "16px", fontWeight: "500" }}
-              >
+              <Radio value="Low" className="status-radio-btn">
                 Low
               </Radio>
-              <Radio
-                value="Medium"
-                style={{ fontSize: "16px", fontWeight: "500" }}
-              >
+              <Radio value="Medium" className="status-radio-btn">
                 Medium
               </Radio>
-              <Radio
-                value="High"
-                style={{ fontSize: "16px", fontWeight: "500" }}
-              >
+              <Radio value="High" className="status-radio-btn">
                 High
               </Radio>
             </Radio.Group>
@@ -95,7 +79,7 @@ const TaskForm = () => {
 
           <Flex justify="center" align="center">
             <Button type="primary" className="add-task" htmlType="submit">
-              Add Task
+              Add New Task
             </Button>
           </Flex>
         </Form>
