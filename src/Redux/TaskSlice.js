@@ -4,7 +4,7 @@ const initialState = {
   tasks: [],
   totalTasks: 0,
   completedTasks: 0,
-  selectedPriority: "All", // Add selectedPriority state
+  selectedPriority: "All",
 };
 
 const persistedTasks = JSON.parse(localStorage.getItem("tasks"));
@@ -53,14 +53,30 @@ const taskSlice = createSlice({
     setSelectedPriority: (state, action) => {
       state.selectedPriority = action.payload;
     },
+    editTask: (state, action) => {
+      const updatedTasks = state.tasks.map((task) =>
+        task.id === action.payload.id ? action.payload : task
+      );
+      state.tasks = updatedTasks;
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
+      state.completedTasks = state.tasks.filter(
+        (task) => task.status === "completed"
+      ).length;
+    },
   },
 });
 
-export const { addTask, deleteTask, updateTaskStatus, setSelectedPriority } =
-  taskSlice.actions;
+export const {
+  addTask,
+  deleteTask,
+  updateTaskStatus,
+  setSelectedPriority,
+  editTask,
+} = taskSlice.actions;
 
 export const selectTasks = (state) => state.tasks.tasks;
 export const selectTotalTasks = (state) => state.tasks.totalTasks;
 export const selectCompletedTasks = (state) => state.tasks.completedTasks;
+export const selectSelectedPriority = (state) => state.tasks.selectedPriority;
 
 export default taskSlice.reducer;
