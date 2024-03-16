@@ -74,6 +74,16 @@ const TaskList = () => {
       title: "Priority",
       dataIndex: "priority",
       key: "priority",
+      render: (text) => (
+        <span
+          style={{
+            color:
+              text === "Low" ? "orange" : text === "Medium" ? "green" : "red",
+          }}
+        >
+          {text}
+        </span>
+      ),
     },
     {
       title: "Action",

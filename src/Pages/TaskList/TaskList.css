@@ -41,19 +41,31 @@
   padding-bottom: 7px;
   font-weight: 600;
 }
-.filter-priority{
+.filter-priority {
   margin: 20px 0;
 }
-.total-task{
+.total-task {
   font-size: 18px;
   font-weight: 500;
   margin: 10px 0px;
 }
-.completed-task{
+.completed-task {
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 10px;
 }
+.low-priority {
+  color: orange;
+}
+
+.medium-priority {
+  color: green;
+}
+
+.high-priority {
+  color: red;
+}
+
 @media (max-width: 768px) {
   .filter-priority {
     margin: 0 15px;
