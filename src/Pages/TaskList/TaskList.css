@@ -2,6 +2,9 @@
   height: 80vh;
   flex-direction: column;
 }
+.table-top{
+  margin-top: 20px;
+}
 .delete-btn {
   background-color: red;
   color: white;

@@ -1,16 +1,27 @@
 import { Button, Flex, Space, Table, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import "./TaskList.css";
-import { deleteTask, updateTaskStatus } from "../../Redux/TaskSlice";
+import {
+  deleteTask,
+  updateTaskStatus,
+  selectTasks,
+  selectTotalTasks,
+  selectCompletedTasks,
+} from "../../Redux/TaskSlice";
 import Swal from "sweetalert2";
 
 const { Title } = Typography;
 
 const TaskList = () => {
   const dispatch = useDispatch();
-  const savedTasks = useSelector((state) => state.tasks.tasks);
+  const savedTasks = useSelector(selectTasks);
+  const totalTasks = useSelector(selectTotalTasks);
+  console.log("totalTasks", totalTasks);
+  const completedTasks = useSelector(selectCompletedTasks);
+  console.log("completedTasks", completedTasks);
 
-  console.log(savedTasks);
+  useEffect(() => {}, [savedTasks]);
 
   const columns = [
     {
@@ -38,7 +49,8 @@ const TaskList = () => {
       key: "action",
       render: (_, record) => (
         <Space>
-          <Button className="mark-as-completed"
+          <Button
+            className="mark-as-completed"
             onClick={() => handleComplete(record)}
             disabled={record.status === "completed"}
           >
@@ -87,11 +99,18 @@ const TaskList = () => {
       <Title level={2} className="home-title">
         All Tasks
       </Title>
+      <Title level={4} className="home-title">
+        Total Tasks : {totalTasks}
+      </Title>
+      <Title level={4} className="home-title">
+        Completed Tasks : {completedTasks}
+      </Title>
       <Table
         dataSource={savedTasks}
         columns={columns}
         pagination={false}
         scroll={{ x: 1300 }}
+        className="table-top"
       />
     </Flex>
   );
