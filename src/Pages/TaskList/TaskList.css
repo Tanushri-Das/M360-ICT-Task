@@ -17,6 +17,12 @@
   height: 40px;
   padding-bottom: 7px;
   font-weight: 600;
+  border: none;
+  outline: none;
+}
+.delete-btn:hover {
+  background-color: red !important;
+  color: white !important;
 }
 .ant-table-thead th {
   font-size: 20px;
@@ -30,7 +36,7 @@
   text-align: center !important;
 }
 .mark-as-completed {
-  background-color: green;
+  background-color: #ff7518;
   color: white;
   font-size: 16px;
   text-align: center;
@@ -40,6 +46,12 @@
   height: 40px;
   padding-bottom: 7px;
   font-weight: 600;
+  border: none;
+  outline: none;
+}
+.mark-as-completed:hover {
+  background-color: #ff7518 !important;
+  color: white !important;
 }
 .filter-priority {
   margin: 20px 0;
@@ -54,18 +66,37 @@
   font-weight: 500;
   margin-bottom: 10px;
 }
-.low-priority {
-  color: orange;
+.edit-btn {
+  background-color: #00004d;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding-bottom: 7px;
+  font-weight: 600;
+  border: none;
+  outline: none;
 }
-
-.medium-priority {
-  color: green;
+.edit-btn:hover {
+  background-color: #00004d !important;
+  color: white !important;
 }
-
-.high-priority {
-  color: red;
+.edit-task{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
-
+.save-btn{
+  margin-top:20px;
+}
+.modal-form-label{
+  font-size: 18px;
+  font-weight: 600;
+}
 @media (max-width: 768px) {
   .filter-priority {
     margin: 0 15px;

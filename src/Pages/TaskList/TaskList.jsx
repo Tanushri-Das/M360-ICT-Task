@@ -97,7 +97,9 @@ const TaskList = () => {
           >
             Mark as Completed
           </Button>
-          <Button onClick={() => handleEdit(record)}>Edit</Button>
+          <Button className="edit-btn" onClick={() => handleEdit(record)}>
+            Edit
+          </Button>
           <Button className="delete-btn" onClick={() => handleDelete(record)}>
             Delete
           </Button>
@@ -175,19 +177,41 @@ const TaskList = () => {
         <Empty description="No tasks available for the selected priority" />
       )}
       <Modal
-        title="Edit Task"
+        title={<div className="edit-task">Edit Task</div>}
+        centered
         visible={editModalVisible}
         onCancel={() => setEditModalVisible(false)}
         footer={null}
       >
         <Form form={form} onFinish={onFinishEdit}>
-          <Form.Item name="task-title" label="Task Title">
+          <Form.Item
+            name="task-title"
+            label="Task Title"
+            labelAlign="left"
+            labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }}
+            className="modal-form-label"
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="task-description" label="Task Description">
+          <Form.Item
+            name="task-description"
+            label="Task Description"
+            labelAlign="left"
+            labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }}
+            className="modal-form-label"
+          >
             <Input.TextArea />
           </Form.Item>
-          <Form.Item name="status" label="Status">
+          <Form.Item
+            name="status"
+            label="Status"
+            labelAlign="left"
+            labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }}
+            className="modal-form-label"
+          >
             <Radio.Group className="radio-btn">
               <Radio
                 style={{ fontSize: "16px", fontWeight: "500" }}
@@ -203,7 +227,14 @@ const TaskList = () => {
               </Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item name="priority" label="Priority">
+          <Form.Item
+            name="priority"
+            label="Priority"
+            labelAlign="left"
+            labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }}
+            className="modal-form-label"
+          >
             <Radio.Group>
               <Radio
                 value="Low"
@@ -225,14 +256,16 @@ const TaskList = () => {
               </Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={() => setEditModalVisible(false)}
-            >
-              Save
-            </Button>
+          <Form.Item className="save-btn">
+            <Flex justify="center" align="center">
+              <Button
+                type="primary"
+                htmlType="submit" className="edit-btn"
+                onClick={() => setEditModalVisible(false)}
+              >
+                Save
+              </Button>
+            </Flex>
           </Form.Item>
         </Form>
       </Modal>

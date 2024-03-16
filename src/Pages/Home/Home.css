@@ -10,13 +10,13 @@
   font-weight: 600;
   color: white;
   font-size: 16px;
+  border: none;
+  outline: none;
 }
 .home-btn:hover {
   border: 2px solid green !important;
   background-color: none !important;
   color: black !important;
-  border: none;
-  outline: none;
 }
 @media (max-width: 768px) {
   .home-title {
