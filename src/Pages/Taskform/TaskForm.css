@@ -2,7 +2,7 @@
   font-size: 20px;
   font-weight: 600;
 }
-.new-task-label{
+.new-task-label {
   text-align: center;
 }
 .task-title {
@@ -27,8 +27,27 @@
   padding: 16px;
   border-radius: 12px;
 }
-@media (max-width: 768px){
-  .form{
-    margin:0 15px;
+.add-task {
+  background-color: #f63e7b;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding-bottom: 7px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+}
+.add-task:hover {
+  border: 2px solid #f63e7b !important;
+  background-color:white !important;
+  color: black !important;
+}
+@media (max-width: 768px) {
+  .form {
+    margin: 0 15px;
   }
 }

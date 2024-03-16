@@ -94,7 +94,7 @@ const TaskForm = () => {
           </Form.Item>
 
           <Flex justify="center" align="center">
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" className="add-task" htmlType="submit">
               Add Task
             </Button>
           </Flex>
