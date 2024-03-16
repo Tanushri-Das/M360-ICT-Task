@@ -1,31 +1,36 @@
-import React from "react";
 import { Button, Flex, Space, Table, Typography } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import "./TaskList.css";
-
+import { deleteTask } from "../../Redux/TaskSlice";
+import Swal from "sweetalert2";
 
 const { Title } = Typography;
+
 const TaskList = () => {
-  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const dispatch = useDispatch();
+  const savedTasks = useSelector((state) => state.tasks.tasks);
+
+  console.log(savedTasks);
 
   const columns = [
     {
       title: "Task Title",
-      dataIndex: ["name", "task-title"],
-      key: "task-title",
+      dataIndex: "task-title",
+      key: "name",
     },
     {
       title: "Task Description",
       dataIndex: "task-description",
-      key: "task-description",
+      key: "description",
     },
     {
       title: "Status",
-      dataIndex: ["status", "status"],
+      dataIndex: "status",
       key: "status",
     },
     {
       title: "Priority",
-      dataIndex: ["priority", "priority"],
+      dataIndex: "priority",
       key: "priority",
     },
     {
@@ -37,11 +42,14 @@ const TaskList = () => {
             Mark as Completed
           </Button>
           <Button onClick={() => handleEdit(record)}>Edit</Button>
-          <Button className="delete-btn" onClick={() => handleDelete(record)}>Delete</Button>
+          <Button className="delete-btn" onClick={() => handleDelete(record)}>
+            Delete
+          </Button>
         </Space>
       ),
     },
   ];
+
   const handleComplete = (record) => {
     // Handle mark as completed action
   };
@@ -51,8 +59,16 @@ const TaskList = () => {
   };
 
   const handleDelete = (record) => {
-    // Handle delete action
+    dispatch(deleteTask(record.id));
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Task Deleted successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
+
   return (
     <Flex justify="center" align="center" className="task-list">
       <Title level={2} className="home-title">
