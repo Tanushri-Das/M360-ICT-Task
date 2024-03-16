@@ -73,19 +73,19 @@ const TaskForm = () => {
           <Form.Item name="priority" className="form-label" label="Priority">
             <Radio.Group>
               <Radio
-                value="low"
+                value="Low"
                 style={{ fontSize: "16px", fontWeight: "500" }}
               >
                 Low
               </Radio>
               <Radio
-                value="medium"
+                value="Medium"
                 style={{ fontSize: "16px", fontWeight: "500" }}
               >
                 Medium
               </Radio>
               <Radio
-                value="high"
+                value="High"
                 style={{ fontSize: "16px", fontWeight: "500" }}
               >
                 High

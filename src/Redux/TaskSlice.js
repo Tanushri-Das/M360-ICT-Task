@@ -4,6 +4,7 @@ const initialState = {
   tasks: [],
   totalTasks: 0,
   completedTasks: 0,
+  selectedPriority: "All", // Add selectedPriority state
 };
 
 const persistedTasks = JSON.parse(localStorage.getItem("tasks"));
@@ -49,10 +50,14 @@ const taskSlice = createSlice({
         (task) => task.status === "completed"
       ).length;
     },
+    setSelectedPriority: (state, action) => {
+      state.selectedPriority = action.payload;
+    },
   },
 });
 
-export const { addTask, deleteTask, updateTaskStatus } = taskSlice.actions;
+export const { addTask, deleteTask, updateTaskStatus, setSelectedPriority } =
+  taskSlice.actions;
 
 export const selectTasks = (state) => state.tasks.tasks;
 export const selectTotalTasks = (state) => state.tasks.totalTasks;

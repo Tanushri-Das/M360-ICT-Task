@@ -2,7 +2,7 @@
   height: 80vh;
   flex-direction: column;
 }
-.table-top{
+.table-top {
   margin-top: 20px;
 }
 .delete-btn {
@@ -37,8 +37,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
   height: 40px;
   padding-bottom: 7px;
   font-weight: 600;
+}
+.filter-priority{
+  margin: 20px 0;
+}
+.total-task{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0px;
+}
+.completed-task{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  .filter-priority {
+    margin: 0 15px;
+    width: 250px;
+  }
+}
+@media (min-width: 768px) {
+  .filter-priority {
+    width: 400px;
+  }
 }
