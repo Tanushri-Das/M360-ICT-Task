@@ -23,6 +23,7 @@ import {
 } from "../../Redux/TaskSlice";
 import Swal from "sweetalert2";
 import "./TaskList.css";
+import { Helmet } from "react-helmet-async";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -148,36 +149,41 @@ const TaskList = () => {
   };
 
   return (
-    <Flex justify="center" align="center" className="task-list">
-      <Title level={2}>All Tasks</Title>
-      <p className="total-task">Total Tasks : {totalTasks}</p>
-      <p className="completed-task">Completed Tasks : {completedTasks}</p>
-      <Select
-        defaultValue="All"
-        className="filter-priority"
-        onChange={handlePriorityChange}
-      >
-        {priorityOptions}
-      </Select>
-      {filteredTasks.length ? (
-        <Table
-          dataSource={filteredTasks}
-          columns={columns}
-          pagination={false}
-          scroll={{ x: 1300 }}
-          className="table-top"
+    <>
+      <Helmet>
+        <title>Taskify | Tasklist</title>
+      </Helmet>
+      <Flex justify="center" align="center" className="task-list">
+        <Title level={2}>All Tasks</Title>
+        <p className="total-task">Total Tasks : {totalTasks}</p>
+        <p className="completed-task">Completed Tasks : {completedTasks}</p>
+        <Select
+          defaultValue="All"
+          className="filter-priority"
+          onChange={handlePriorityChange}
+        >
+          {priorityOptions}
+        </Select>
+        {filteredTasks.length ? (
+          <Table
+            dataSource={filteredTasks}
+            columns={columns}
+            pagination={false}
+            scroll={{ x: 1300 }}
+            className="table-top"
+          />
+        ) : (
+          <Empty description="No tasks available for the selected priority" />
+        )}
+        <EditTaskModal
+          visible={editModalVisible}
+          onCancel={() => setEditModalVisible(false)}
+          onFinishEdit={onFinishEdit}
+          form={form}
+          record={record}
         />
-      ) : (
-        <Empty description="No tasks available for the selected priority" />
-      )}
-      <EditTaskModal
-        visible={editModalVisible}
-        onCancel={() => setEditModalVisible(false)}
-        onFinishEdit={onFinishEdit}
-        form={form}
-        record={record}
-      />
-    </Flex>
+      </Flex>
+    </>
   );
 };
 
